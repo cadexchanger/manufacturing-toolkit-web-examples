@@ -1,0 +1,84 @@
+<!--
+// ****************************************************************************
+//
+// Copyright (C) 2008-2014, Roman Lygin. All rights reserved.
+// Copyright (C) 2014-2023, CADEX. All rights reserved.
+//
+// This file is part of the CAD Exchanger software.
+//
+// You may use this file under the terms of the BSD license as follows:
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+// * Redistributions of source code must retain the above copyright notice,
+//   this list of conditions and the following disclaimer.
+// * Redistributions in binary form must reproduce the above copyright notice,
+//   this list of conditions and the following disclaimer in the documentation
+//   and/or other materials provided with the distribution.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+// LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+// SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+// CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+// ****************************************************************************
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/reboot.css' />
+    <link rel='stylesheet' href='/stylesheets/viewer.css' />
+  </head>
+  <body>
+
+    <!-- Container for model viewer, part selectors and trees: -->
+    <div id="example-container">
+      <a href="/" id="back-to-start-page-link">Back to models</a>
+      <!-- Buttons to select the model type (original/unfolded): -->
+      <div class="model-type-selector">
+        <input type="radio" name="modelTypeSelector" id="inputRadioOriginalType" checked>
+        <label for="inputRadioOriginalType">Original part</label>
+        <input type="radio" name="modelTypeSelector" id="inputRadioUnfoldedType">
+        <label for="inputRadioUnfoldedType">Unfolded part</label>
+      </div>
+      <div id="file-viewer"></div>
+      <div class="tree-view-panel">
+        <!-- Buttons to select the type of data to build the tree: -->
+        <div class="tree-type-selector">
+          <input type="radio" name="treeTypeSelector" id="inputRadioFeatures" checked>
+          <label for="inputRadioFeatures">Features</label>
+          <input type="radio" name="treeTypeSelector" id="inputRadioDFM">
+          <label for="inputRadioDFM">DFM Analysis</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ES Module Shims: Import maps polyfill for modules browsers without import maps support (all except Chrome 89+) -->
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.5.1/dist/es-module-shims.js" crossorigin="anonymous"></script>
+
+    <!-- Declare the importmap to control the resolution of module specifiers: -->
+    <script type="importmap">
+      {
+        "imports": {
+          "pako": "/pako/dist/pako.esm.mjs",
+          "three": "/three/build/three.module.js",
+          "@cadexchanger/web-toolkit": "/@cadexchanger/web-toolkit/build/cadex.min.mjs"
+        }
+      }
+    </script>
+
+    <!-- Pay attention to the use of the .mjs extension for using ECMAScript module system within script: -->
+    <script type="module" src="/javascripts/viewer.mjs"></script>
+
+  </body>
+</html>

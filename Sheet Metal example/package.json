@@ -1,0 +1,14 @@
+{
+  "name": "sheet-metal-example",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@cadexchanger/web-toolkit": "3.15.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}

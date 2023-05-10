@@ -1,0 +1,294 @@
+/*****************************************************************************
+ * Copyright (C) 2008-2014, Roman Lygin. All rights reserved.
+ * Copyright (C) 2014-2023, CADEX. All rights reserved.
+ * This file is part of the CAD Exchanger software.
+ * You may use this file under the terms of the BSD license as follows:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * * Redistributions of source code must retain the above copyright notice,
+ *   this list of conditions and the following disclaimer.
+ * * Redistributions in binary form must reproduce the above copyright notice,
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *****************************************************************************/
+
+/* Styles for the viewer page. */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+  --ui-kit-text-font-family: 'Nunito Sans';
+  --ui-kit-text-color: #333333;
+}
+
+* {
+  font-family: var(--ui-kit-text-font-family);
+  color: #333333;
+  font-size: 16px;
+}
+
+/* Custom styles for scroll bar for all elements: */
+* {
+  /* For Firefox: */
+  scrollbar-color: rgba(228, 228, 228, 0.5) transparent; /* |color of slider| |color of scroll bar| */
+  scrollbar-width: thin;
+
+  /* For Chrome 28+: */
+  @supports (-webkit-appearance:none) {
+    overflow: overlay;
+  }
+}
+/* For WebKit/Blink: */
+*::-webkit-scrollbar {
+  width: 8px; /* width for vertical scroll */
+  height: 8px; /* hight for horizontal scroll */
+  background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  background-color: rgba(228, 228, 228, 0.5);
+  border-radius: 6px;
+}
+*::-webkit-scrollbar-thumb:vertical {
+  width: 6px;
+  height: 145px;
+}
+*::-webkit-scrollbar-thumb:horizontal {
+  width: 6px;
+  height: 145px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #BEBEBE;
+}
+*::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#example-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+
+#example-container select {
+  position: absolute;
+  top: 7rem;
+  left: 1rem;
+
+  display: block;
+  width: auto;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem 1.75rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333333;
+
+  background-image: url("/images/expand.svg");
+  background-repeat: no-repeat;
+  background-position: center right 8px;
+  background-size: unset;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #BEBEBE;
+  border-radius: 6px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#example-container select:hover {
+  cursor: pointer;
+}
+
+#example-container select:focus {
+  outline: none;
+}
+
+#example-container select:active {
+  background-color: #F2F2F2;
+}
+
+#example-container select[multiple],
+#example-container select[size]:not([size="1"]) {
+  height: auto;
+  padding-right: 0.75rem;
+  background-image: none;
+}
+
+.model-type-selector {
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  z-index: 1;
+
+  padding: 0.25rem;
+  background-color: #FFFFFF;
+  border: 1px solid #BEBEBE;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.model-type-selector input {
+  display: none;
+}
+
+.model-type-selector label {
+  cursor: pointer;
+  padding: 2px 4px;
+  flex-grow: 1;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.model-type-selector input:checked + label {
+  background: #00000050;
+}
+
+.tree-view-panel {
+  width: 20%;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.tree-type-selector {
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid #BEBEBE;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tree-type-selector input {
+  display: none;
+}
+
+.tree-type-selector label {
+  cursor: pointer;
+  padding: 2px 4px;
+  flex-grow: 1;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.tree-type-selector input:checked + label {
+  background: #00000050;
+}
+
+.tree-view-panel .unfolded-features {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: start;
+}
+
+.tree-view-panel .unfolded-features article {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 0.5rem;
+}
+
+.tree-view-panel .unfolded-features article div:first-child {
+  margin-right: auto;
+}
+
+.tree-view-panel .unfolded-features article div:last-child {
+  margin-left: 0.5rem;
+}
+
+.tree-view-panel > details, .tree-view-panel .error-message {
+  overflow: auto;
+}
+
+.tree-view-panel .error-message {
+  text-align: center;
+  margin: auto;
+}
+
+.tree-view-panel > details details {
+  margin-left: 1rem;
+}
+
+.tree-view-panel > details details span {
+  display: block;
+  margin-left: 1rem;
+}
+.tree-view-panel > details details span::before {
+  content: '\2022';
+  margin-right: 0.5rem;
+}
+.tree-view-panel > details details span:hover {
+  background-color: #00000030;
+  cursor: pointer;
+}
+
+.tree-view-panel .feature-selected {
+  background-color: #00000050;
+}
+
+#file-viewer {
+  width: 80%;
+  height: 100%;
+
+  background: #FBFBFB;
+}
+
+#back-to-start-page-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+
+  display: block;
+  width: auto;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333333;
+
+  background-color: #FFFFFF;
+
+  border: 1px solid #BEBEBE;
+  border-radius: 6px;
+
+  text-decoration: none;
+}
+
+#back-to-start-page-link:hover {
+  background-color: #e3e3e3;
+}
