@@ -34,10 +34,8 @@ const express = require('express');
 const router = express.Router();
 
 /* Processing a GET request for viewer page. "modelName" param will be used when loading the viewer. */
-router.get('/:processName/:modelName', function(_, theRes, _) {
-  theRes.render('viewer', {
-    title: 'Manufacturing Toolkit - CNC Machining example',
-  });
+router.get('/:modelName', function(_, theRes, _) {
+  theRes.render('viewer');
 });
 
 module.exports = router;

@@ -33,17 +33,17 @@
 
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title><%= title %></title>
+    <title>Sheet Metal Viewer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/reboot.css' />
-    <link rel='stylesheet' href='/stylesheets/viewer.css' />
+    <link rel='stylesheet' href='/static/css/reboot.css' />
+    <link rel='stylesheet' href='/static/css/sheet-metal-viewer.css' />
   </head>
   <body>
 
     <!-- Container for model viewer, part selectors and trees: -->
     <div id="example-container">
-      <a href="/" id="back-to-start-page-link">Back to models</a>
       <!-- Buttons to select the model type (original/unfolded): -->
       <div class="model-type-selector">
         <input type="radio" name="modelTypeSelector" id="inputRadioOriginalType" checked>
@@ -70,15 +70,15 @@
     <script type="importmap">
       {
         "imports": {
-          "pako": "/pako/dist/pako.esm.mjs",
-          "three": "/three/build/three.module.js",
-          "@cadexchanger/web-toolkit": "/@cadexchanger/web-toolkit/build/cadex.min.mjs"
+          "three": "/static/packages/three.module.js",
+          "@cadexchanger/web-toolkit": "/static/packages/cadex.min.mjs"
         }
       }
     </script>
 
     <!-- Pay attention to the use of the .mjs extension for using ECMAScript module system within script: -->
-    <script type="module" src="/javascripts/viewer.mjs"></script>
+    <script type="module" src="/static/js/sheet-metal-viewer.mjs"></script>
 
   </body>
+
 </html>

@@ -34,15 +34,12 @@ const multer  = require('multer');
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
-const process = require('process');
 
 const router = express.Router();
 
-const aPathToConverterExe = process.platform === 'linux' ?
-    path.join(__dirname, '../converter/MTKConverter') :
-    path.join(__dirname, '../converter/MTKConverter.exe');
-const aPathToUploadFolder = path.join(__dirname, '../public/data/models/upload');
-const aPathToNativeFolder = path.join(__dirname, '../public/data/models/native');
+const aPathToConverterExe = path.join(__dirname, '../converter/MTKConverter.exe');
+const aPathToUploadFolder = path.join(__dirname, '../public/static/data/examples/upload');
+const aPathToNativeFolder = path.join(__dirname, '../public/static/data/examples/sheet_metal');
 
 /* Declare a storage object for storing user-loaded models: */
 const storage = multer.diskStorage({
@@ -61,7 +58,7 @@ router.get('/', function(_, theRes, _) {
       thePrev.push({
         title: theCurr,
         href: `/viewer/${theCurr}`,
-        src: `/data/models/native/${theCurr}/thumbnail.png`,
+        src: `/static/data/examples/sheet_metal/${theCurr}/thumbnail.png`,
       });
       return thePrev;
     }, []);
@@ -87,6 +84,16 @@ router.post(
           theRes.status('500').send(theError.message);
           return;
         } else {
+          /* If the resulting native folder doesn't include the original model name: */
+          for (const filename of fs.readdirSync(path.join(aPathToNativeFolder, theReq.file.originalname))) {
+            if (filename === '.cdxfb') {
+              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}.cdxfb`));
+            }
+            if (filename === '_unfolded.cdxfb') {
+              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}_unfolded.cdxfb`));
+            }
+          }
+
           theRes.status(201).send({
             modelName: theReq.file.originalname,
           });

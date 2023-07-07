@@ -46,7 +46,6 @@ app.set('view engine', 'ejs');
 
 /* Connecting routes for static files: */
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
 
 /* Attaching route handlers to the root route (to the application): */
 app.use('/', indexRouter);

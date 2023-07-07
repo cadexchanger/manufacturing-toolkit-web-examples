@@ -34,15 +34,12 @@ const multer  = require('multer');
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
-const process = require('process');
 
 const router = express.Router();
 
-const aPathToConverterExe = process.platform === 'linux' ?
-    path.join(__dirname, '../converter/MTKConverter') :
-    path.join(__dirname, '../converter/MTKConverter.exe');
-const aPathToUploadFolder = path.join(__dirname, '../public/data/models/upload');
-const aPathToNativeFolder = path.join(__dirname, '../public/data/models/native');
+const aPathToConverterExe = path.join(__dirname, '../converter/MTKConverter.exe');
+const aPathToUploadFolder = path.join(__dirname, '../public/static/data/examples/upload');
+const aPathToNativeFolder = path.join(__dirname, '../public/static/data/examples/machining');
 
 /**
  * Return the name of the processing operation.
@@ -65,19 +62,14 @@ const upload = multer({ storage });
 
 /* Processing a GET request for index page: */
 router.get('/', function(_, theRes, _) {
-  const aProcessModelNameMatrix = fs.readdirSync(aPathToNativeFolder)
-    .map((theProcessFolderName) => fs.readdirSync(path.join(aPathToNativeFolder, theProcessFolderName))
-      .map((theModelFolderName) => ({ process: theProcessFolderName, model: theModelFolderName })))
-    .reduce((thePrev, theCurr) => thePrev.concat(theCurr), []);
-
   /* Form the prebuiltModels object for transfer to the index page template engine: */
-  const aPrebuiltModels = aProcessModelNameMatrix
+  const aPrebuiltModels = fs.readdirSync(aPathToNativeFolder)
     .reduce((thePrev, theCurr) => {
       thePrev.push({
-        processTitle: getNameOfOperation(path.join(aPathToNativeFolder, theCurr.process, theCurr.model, 'process_data.json')) || 'Unknown',
-        title: theCurr.model,
-        href: `/viewer/${theCurr.process}/${theCurr.model}`,
-        src: `/data/models/native/${theCurr.process}/${theCurr.model}/thumbnail.png`,
+        processTitle: getNameOfOperation(path.join(aPathToNativeFolder, theCurr, 'process_data.json')) || 'Unknown',
+        title: theCurr,
+        href: `/viewer/${theCurr}`,
+        src: `/static/data/examples/machining/${theCurr}/thumbnail.png`,
       });
       return thePrev;
     }, []);
@@ -99,17 +91,23 @@ router.post(
 
     /* Call MTKConverter for user-loaded model and send the result to browser: */
     exec(
-      `"${aPathToConverterExe}" -i "${path.join(theReq.file.destination, theReq.file.originalname)}" -p ${aConverterOperation} -e "${path.join(aPathToNativeFolder, aConverterOperation, theReq.file.originalname)}"`,
+      `"${aPathToConverterExe}" -i "${path.join(theReq.file.destination, theReq.file.originalname)}" -p ${aConverterOperation} -e "${path.join(aPathToNativeFolder, theReq.file.originalname)}"`,
       (theError) => {
         if (theError) {
           console.error(`MTKConverter error: ${theError}`);
           theRes.status('500').send(theError.message);
           return;
         } else {
+          /* If the resulting native folder doesn't include the original model name: */
+          for (const filename of fs.readdirSync(path.join(aPathToNativeFolder, theReq.file.originalname))) {
+            if (filename === '.cdxfb') {
+              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}.cdxfb`));
+            }
+          }
+
           theRes.status(201).send({
-            additionalPath: aConverterOperation,
             modelName: theReq.file.originalname,
-            operation: getNameOfOperation(path.join(aPathToNativeFolder, aConverterOperation, theReq.file.originalname, 'process_data.json')) || 'Unknown',
+            operation: getNameOfOperation(path.join(aPathToNativeFolder, theReq.file.originalname, 'process_data.json')) || 'Unknown',
           });
         }
       }

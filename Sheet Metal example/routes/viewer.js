@@ -35,9 +35,7 @@ const router = express.Router();
 
 /* Processing a GET request for viewer page. "modelName" param will be used when loading the viewer. */
 router.get('/:modelName', function(_, theRes, _) {
-  theRes.render('viewer', {
-    title: 'Manufacturing Toolkit - Sheet Metal example',
-  });
+  theRes.render('viewer');
 });
 
 module.exports = router;
