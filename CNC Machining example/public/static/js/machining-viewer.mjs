@@ -114,7 +114,7 @@ async function fetchProcessData(theModelName) {
 * @returns {string}
 */
 function modelUrl(theModelId) {
-  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}.cdxfb`;
+  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}.cdxweb`;
 }
 
 /**

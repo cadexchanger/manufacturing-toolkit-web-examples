@@ -86,11 +86,11 @@ router.post(
         } else {
           /* If the resulting native folder doesn't include the original model name: */
           for (const filename of fs.readdirSync(path.join(aPathToNativeFolder, theReq.file.originalname))) {
-            if (filename === '.cdxfb') {
-              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}.cdxfb`));
+            if (filename === '.cdxweb') {
+              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}.cdxweb`));
             }
-            if (filename === '_unfolded.cdxfb') {
-              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}_unfolded.cdxfb`));
+            if (filename === '_unfolded.cdxweb') {
+              fs.renameSync(path.join(aPathToNativeFolder, theReq.file.originalname, filename), path.join(aPathToNativeFolder, theReq.file.originalname, `${theReq.file.originalname.split('.').slice(0, -1).join('')}_unfolded.cdxweb`));
             }
           }
 

@@ -2,7 +2,7 @@
     "version": "1",
     "parts": [
         {
-            "partId": "33634bb1-96d1-4c2d-92f7-602fef8d00b4",
+            "partId": "0411f1de-fda1-4d4b-b737-7d18b6e447c0",
             "process": "CNC Machining Lathe+Milling",
             "featureRecognition": {
                 "name": "Feature Recognition",

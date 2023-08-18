@@ -124,7 +124,7 @@ async function fetchProcessData(theModelName) {
 * @returns {Promise<boolean>}
 */
 async function isUnfoldedModelExists(theModelName) {
-  const aResponse = await fetch(aPathToPrebuiltModels + theModelName + `/${theModelName.split('.').slice(0, -1).join('')}_unfolded.cdxfb/scenegraph.cdxfb`);
+  const aResponse = await fetch(aPathToPrebuiltModels + theModelName + `/${theModelName.split('.').slice(0, -1).join('')}_unfolded.cdxweb/scenegraph.cdxweb`);
   return !(aResponse.status === 404);
 }
 
@@ -134,7 +134,7 @@ async function isUnfoldedModelExists(theModelName) {
  * @returns {string}
  */
 function modelUrl(theModelId) {
-  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}.cdxfb`;
+  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}.cdxweb`;
 }
 
 /**
@@ -143,7 +143,7 @@ function modelUrl(theModelId) {
 * @returns {string}
 */
 function modelUrlForUnfolded(theModelId) {
-  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}_unfolded.cdxfb`;
+  return aPathToPrebuiltModels + theModelId + `/${theModelId.split('.').slice(0, -1).join('')}_unfolded.cdxweb`;
 }
 
 /**
@@ -1021,7 +1021,7 @@ class SheetMetalViewer extends Viewer {
 
     this.initExportJSON();
 
-    /* If there is situation when <model_name>_unfolded.cdxfb is not generated: */
+    /* If there is situation when <model_name>_unfolded.cdxweb is not generated: */
     const aShowEmptyUnfoldedModel = this._isModelUnfolded ? !(await isUnfoldedModelExists(this._modelName)) : false;
 
     if (!aShowEmptyUnfoldedModel) {
@@ -1102,7 +1102,7 @@ class SheetMetalViewer extends Viewer {
     /* Recognize the choice of model type through the label of the selected radio input: */
     this._isModelUnfolded = !(/** @type {HTMLLabelElement} */(document.querySelector('.model-type-selector input:checked + label')).innerText === 'Original part');
 
-    /* If there is situation when <model_name>_unfolded.cdxfb is not generated: */
+    /* If there is situation when <model_name>_unfolded.cdxweb is not generated: */
     const aShowEmptyUnfoldedModel = this._isModelUnfolded ? !(await isUnfoldedModelExists(this._modelName)) : false;
 
     await this.loadModel(this._isModelUnfolded && !aShowEmptyUnfoldedModel ? dataLoaderForUnfolded : dataLoader, this._modelName);

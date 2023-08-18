@@ -2,7 +2,7 @@
     "version": "1",
     "parts": [
         {
-            "partId": "e775f9f9-0f86-4dd2-bb47-2460e2cba4d9",
+            "partId": "bac10394-7038-42b4-ab41-1b5d57a44e74",
             "process": "Sheet Metal",
             "featureRecognition": {
                 "name": "Feature Recognition",
@@ -483,12 +483,17 @@
                         "subGroupCount": "2",
                         "subGroups": [
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "1.50"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "1.00"
                                     },
                                     {
                                         "name": "Axis",
@@ -564,12 +569,17 @@
                                 ]
                             },
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "2.00"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "1.00"
                                     },
                                     {
                                         "name": "Axis",
@@ -2144,7 +2154,7 @@
                                     {
                                         "name": "Corner Fillet Radius",
                                         "units": "mm",
-                                        "value": "0.00"
+                                        "value": "5.00"
                                     }
                                 ],
                                 "featureCount": "1",
@@ -2338,7 +2348,7 @@
                                     {
                                         "name": "Actual Corner Fillet Radius",
                                         "units": "mm",
-                                        "value": "0.00"
+                                        "value": "5.00"
                                     }
                                 ],
                                 "featureCount": "1",

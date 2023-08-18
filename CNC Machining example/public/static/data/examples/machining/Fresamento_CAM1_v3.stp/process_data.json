@@ -2,7 +2,7 @@
     "version": "1",
     "parts": [
         {
-            "partId": "077da1de-c5e6-4fa7-a6a1-b1a1142ed242",
+            "partId": "d305c6c2-6471-4939-919d-3b5eeb0372c3",
             "process": "CNC Machining Milling",
             "featureRecognition": {
                 "name": "Feature Recognition",
@@ -667,7 +667,7 @@
                                     {
                                         "name": "Axis",
                                         "units": "",
-                                        "value": "(0.00, 1.00, 0.00)"
+                                        "value": "(-0.00, 1.00, -0.00)"
                                     }
                                 ],
                                 "featureCount": "1",
@@ -676,10 +676,10 @@
                                         "shapeIDCount": "13",
                                         "shapeIDs": [
                                             {
-                                                "id": "253"
+                                                "id": "201"
                                             },
                                             {
-                                                "id": "201"
+                                                "id": "253"
                                             },
                                             {
                                                 "id": "211"
@@ -748,10 +748,10 @@
                                         "shapeIDCount": "5",
                                         "shapeIDs": [
                                             {
-                                                "id": "717"
+                                                "id": "700"
                                             },
                                             {
-                                                "id": "700"
+                                                "id": "717"
                                             },
                                             {
                                                 "id": "720"
@@ -796,10 +796,25 @@
                                         "shapeIDCount": "12",
                                         "shapeIDs": [
                                             {
-                                                "id": "417"
+                                                "id": "4"
+                                            },
+                                            {
+                                                "id": "35"
+                                            },
+                                            {
+                                                "id": "14"
+                                            },
+                                            {
+                                                "id": "21"
+                                            },
+                                            {
+                                                "id": "28"
                                             },
                                             {
                                                 "id": "39"
+                                            },
+                                            {
+                                                "id": "417"
                                             },
                                             {
                                                 "id": "420"
@@ -815,21 +830,6 @@
                                             },
                                             {
                                                 "id": "377"
-                                            },
-                                            {
-                                                "id": "35"
-                                            },
-                                            {
-                                                "id": "4"
-                                            },
-                                            {
-                                                "id": "14"
-                                            },
-                                            {
-                                                "id": "21"
-                                            },
-                                            {
-                                                "id": "28"
                                             }
                                         ]
                                     }
@@ -865,10 +865,10 @@
                                         "shapeIDCount": "27",
                                         "shapeIDs": [
                                             {
-                                                "id": "368"
+                                                "id": "255"
                                             },
                                             {
-                                                "id": "255"
+                                                "id": "368"
                                             },
                                             {
                                                 "id": "265"

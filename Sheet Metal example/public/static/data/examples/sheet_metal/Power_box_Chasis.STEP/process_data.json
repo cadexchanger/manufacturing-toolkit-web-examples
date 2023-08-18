@@ -2,7 +2,7 @@
     "version": "1",
     "parts": [
         {
-            "partId": "6a3e5daf-ef2b-49ac-9087-aa583c1ef6ae",
+            "partId": "5ddf62f4-1edb-4e84-9e26-83a9b6456de9",
             "process": "Sheet Metal",
             "featureRecognition": {
                 "name": "Feature Recognition",
@@ -303,12 +303,17 @@
                         "subGroupCount": "3",
                         "subGroups": [
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "1.00"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "0.60"
                                     },
                                     {
                                         "name": "Axis",
@@ -365,12 +370,17 @@
                                 ]
                             },
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "1.50"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "0.60"
                                     },
                                     {
                                         "name": "Axis",
@@ -427,12 +437,17 @@
                                 ]
                             },
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "1.50"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "0.60"
                                     },
                                     {
                                         "name": "Axis",
@@ -497,12 +512,17 @@
                         "subGroupCount": "1",
                         "subGroups": [
                             {
-                                "parametersCount": "2",
+                                "parametersCount": "3",
                                 "parameters": [
                                     {
                                         "name": "Radius",
                                         "units": "mm",
                                         "value": "1.50"
+                                    },
+                                    {
+                                        "name": "Depth",
+                                        "units": "mm",
+                                        "value": "2.50"
                                     },
                                     {
                                         "name": "Axis",
