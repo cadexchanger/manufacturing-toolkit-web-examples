@@ -20,7 +20,7 @@ To use the examples, first obtain the MTK evaluation [here](https://cadexchanger
 
 2. Install the Manufacturing Toolkit Converter into `converter` folder inside concrete example using [this](https://docs.cadexchanger.com/mtk/mtk_install_page.html#mtk_quick_start_installation_converter) instruction. The `converter` folder should be placed inside each example, e.g. `..\Sheet Metal example\converter\`.
 
-3. Open a terminal and type:
+3. Open a terminal in concrete example folder (e.g. `..\Sheet Metal example\`) and type:
     ```
     npm install
     npm start
